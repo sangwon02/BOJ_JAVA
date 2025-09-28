@@ -7,20 +7,18 @@ import java.util.StringTokenizer;
 
 public class Main {
     public static boolean isPrime(int num) {
-        // 1은 소수가 아니므로 false
         if (num < 2) {
             return false;
         }
 
-        // 2부터 num-1까지의 수로 나누어 본다
-        for (int i = 2; i < num; i++) {
-            // 만약 나누어떨어지는 수가 있다면, 약수가 더 있다는 뜻이므로 소수가 아니다.
+        // 2부터 num의 제곱근까지만 확인한다.
+        // i <= Math.sqrt(num) 과 같지만, i*i <= num 이 연산이 더 빠름
+        for (int i = 2; i * i <= num; i++) {
             if (num % i == 0) {
                 return false;
             }
         }
 
-        // 반복문이 끝날 때까지 나누어떨어지지 않았다면 소수
         return true;
     }
 
