@@ -9,22 +9,27 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        boolean[] isSubmitted = new boolean[31];
 
         ArrayList<Integer> li = new ArrayList<>();
 
-        for (int i = 1; i < 31; i++) {
-            li.add(i);
+        for (int i = 1; i <= 28; i++) {
+            int num = Integer.parseInt(br.readLine());
+            li.add(num);
         }
 
-        for (int i = 0; i < 28; i++) {
-            int score = Integer.parseInt(br.readLine());
-            li.remove(Integer.valueOf(score));
+        // 제출한 학생의 번호에 해당하는 칸을 true로 바꾼다.
+        for (int num : li) {
+            isSubmitted[num] = true;
         }
 
-        System.out.println(li.get(0));
-        System.out.println(li.get(1));
-
-        br.close();
+        // 답 출력
+        for (int i = 1; i <= 30; i++) {
+            if (isSubmitted[i] == false) {
+                System.out.println(i);
+            }
+        }
     }
 }
