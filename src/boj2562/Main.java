@@ -7,23 +7,27 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int[] arr = new int[9];
+        int[] nums = new int[9];
+
+        // 정수 입력 받아 nums 배열에 저장
         for (int i = 0; i < 9; i++) {
-            int j = Integer.parseInt(br.readLine());
-            arr[i] = j;
+            nums[i] = Integer.parseInt(br.readLine());
         }
 
-        int max = arr[0];
-        int maxindex = 0;
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i] > max) { // 큰 값을 발견하면
-                max = arr[i];   // 최댓값을 교체
+        int max = nums[0]; // 최댓값 일단 0번째
+        int maxindex = 0; // 최댓값의 인덱스 값 일단 0
+
+        for (int i = 1; i < 9; i++) {
+            if (nums[i] > max) {  // 만약 더 큰 값이 나오면
+                max = nums[i];  // 교체
                 maxindex = i;
             }
+
         }
 
-        System.out.println(max);
-        System.out.println(maxindex+1);
+        System.out.println(max); // 최댓값
+        System.out.println(maxindex+1); //최댓값의 인덱스 값 + 1
+
         br.close();
     }
 }
