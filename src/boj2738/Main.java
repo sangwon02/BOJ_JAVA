@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
@@ -15,21 +15,23 @@ public class Main {
 
         int[][] arr1 = new int[n][m];
 
-        for (int i = 0; i < n; i++){
+        // 첫 번째 행렬 입력받기
+        for (int i = 0; i < n; i++) {
             StringTokenizer st1 = new StringTokenizer(br.readLine());
             for (int j = 0; j < m; j++) {
                 arr1[i][j] = Integer.parseInt(st1.nextToken());
             }
         }
 
-        for (int i = 0; i < n; i++){
+        // 두 번째 행렬을 입력받으면서 바로 더함
+        for (int i = 0; i < n; i++) {
             StringTokenizer st1 = new StringTokenizer(br.readLine());
             for (int j = 0; j < m; j++) {
                 arr1[i][j] += Integer.parseInt(st1.nextToken());
             }
         }
 
-
+        // 답 출력
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 System.out.print(arr1[i][j] + " ");
@@ -37,7 +39,5 @@ public class Main {
             System.out.println();
         }
         br.close();
-
     }
-
 }
