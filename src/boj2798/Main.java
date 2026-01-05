@@ -28,7 +28,6 @@ public class Main {
             for (int j = i + 1; j < n - 1; j++) {
                 for (int k = j + 1; k < n; k++) {
                     int currentSum = cards[i] + cards[j] + cards[k];
-
                     if (currentSum <= m && currentSum > res) {
                         res = currentSum;
                     }
