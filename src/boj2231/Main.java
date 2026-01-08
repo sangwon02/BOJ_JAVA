@@ -9,28 +9,28 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int n = Integer.parseInt(br.readLine());
-        int number = 0;
 
-        while (number < n) {
+        int num = 0;
 
-            number++;
+        while (n > num) {
+            num += 1;
+            int num2 = num;
+            int sum = 0;
 
-            int number2 = number;
-            int sumOfDigits = 0;
-
-            while (number2 != 0) {
-                sumOfDigits += number2 % 10; // 마지막 자릿수를 더하고
-                number2 /= 10;   // 마지막 자릿수를 없앤다
+            while (num2 != 0) {
+                sum += num2%10;
+                num2 /=10;
             }
 
-            if ((number+sumOfDigits)==n){
-                System.out.println(number);
+            if ((sum+num)==n){
+                System.out.println(num);
                 br.close();
                 System.exit(0);
             }
         }
 
         System.out.println(0);
+
         br.close();
     }
 }
