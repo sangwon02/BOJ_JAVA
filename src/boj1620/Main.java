@@ -7,43 +7,7 @@ import java.util.HashMap;
 import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        StringBuilder sb = new StringBuilder();
-
-        int N = Integer.parseInt(st.nextToken());
-        int M = Integer.parseInt(st.nextToken());
-
-        // 이름
-        HashMap<String, Integer> nameToNumMap = new HashMap<>();
-        // 번호
-        String[] numToNameArr = new String[N + 1];
-
-        // N개의 포켓몬을 두 자료구조에 모두 저장
-        for (int i = 1; i <= N; i++) {
-            String name = br.readLine();
-            nameToNumMap.put(name, i);
-            numToNameArr[i] = name;
-        }
-
-        // M개의 문제를 푼다
-        for (int i = 0; i < M; i++) {
-            String question = br.readLine();
-            // 숫자인지 문자인지 판별
-            if (isNumeric(question)) { // 숫자인 경우
-                int num = Integer.parseInt(question);
-                sb.append(numToNameArr[num]).append("\n"); // 배열에서 이름 찾기
-            } else { // 문자인 경우
-                sb.append(nameToNumMap.get(question)).append("\n"); // 맵에서 번호 찾기
-            }
-        }
-
-        System.out.print(sb.toString());
-        br.close();
-    }
-
-    // 문자열이 숫자인지 판별하는 보조 메서드
+    // 문자열이 숫자인지 판별하는 함수
     public static boolean isNumeric(String s) {
         try {
             Integer.parseInt(s);
@@ -52,4 +16,41 @@ public class Main {
             return false;
         }
     }
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int n = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
+
+        // 포켓몬 이름과 번호를 담을 맵
+        HashMap<String, Integer> nameToNum = new HashMap<>();
+        // 번호와 이름을 담을 배열
+        String[] numToName = new String[n + 1];
+
+        // n개의 포켓몬을 두 자료구조에 모두 저장
+        for (int i = 1; i <= n; i++) {
+            String name = br.readLine();
+            nameToNum.put(name, i);
+            numToName[i] = name;
+        }
+
+        // 다음으로 m개의 문제를 푼다
+        for (int i = 0; i < m; i++) {
+
+            String question = br.readLine();// 일단 입력 받고
+            // 숫자인지 문자인지 판별
+            if (isNumeric(question)) { // 숫자인 경우
+                int num = Integer.parseInt(question);  // 정수형 변수로 바꿔주고
+                System.out.println(numToName[num]);  // 배열에서 이름 찾기
+            } else { // 문자인 경우
+                System.out.println(nameToNum.get(question));  // 맵에서 번호 찾기
+            }
+        }
+
+        br.close();
+    }
+
+
 }
