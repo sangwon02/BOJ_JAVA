@@ -1,32 +1,35 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n =Integer.parseInt(br.readLine());
 
-        int num = 0;
+        int n = Integer.parseInt(br.readLine());
+        Map<Integer, Integer> cowMap = new HashMap<>();
+        int res = 0;
 
-        while (n > num) {
-            num += 1;
-            int num2 = num;
-            int sum = 0;
-            while (num2 != 0) {
-                sum += num2%10;
-                num2 = num2/10;
+        for (int i = 0; i < n; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int numCow = Integer.parseInt(st.nextToken());
+            int cowLocation = Integer.parseInt(st.nextToken());
+
+            if (!cowMap.containsKey(numCow)) {
+                cowMap.put(numCow,cowLocation);
+            } else {
+                if (cowMap.get(numCow) != cowLocation) {
+                    res += 1;
+                    cowMap.put(numCow,cowLocation);
+                }
             }
-            if ((sum+num)==n) {
-                System.out.println(num);
-                br.close();
-                System.exit(0);
 
-            }
         }
+        System.out.println(res);
 
-        System.out.println(0);
         br.close();
-
     }
 }
