@@ -24,7 +24,7 @@ public class Main {
             list.add((list.get(i) + list.get(i-1))% 10007);
         }
 
-        System.out.println(list.get(list.size()-1));
+        System.out.println(list.get(n-1));
 
         br.close();
 
