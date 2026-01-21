@@ -50,5 +50,6 @@ public class Main {
         perm(0);
 
         System.out.print(sb);
+
     }
 }
