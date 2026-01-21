@@ -8,19 +8,23 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
+        int cnt = 0;
+        int num = 666;  // 영화 제목에 들어갈 숫자
 
-        int count = 0;
-        int num = 666;
         while (true) {
+            // 만약 666을 포함하고 있으면
             if (String.valueOf(num).contains("666")) {
-                count++;
+                cnt ++;  // cnt번째값 +1
             }
-            if (count == n) {
-                System.out.println(num);
-                break;
+
+            if (cnt == n) { // 만약 n번째 값이라면
+                break;  // while문 종료
             }
-            num++;
+
+            num += 1;  //들어갈 숫자 +1
         }
+
+        System.out.println(num);  //답출력
 
         br.close();
     }
