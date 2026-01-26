@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -10,26 +11,29 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int n = Integer.parseInt(br.readLine());
-        Map<Integer, Integer> cowMap = new HashMap<>();
-        int res = 0;
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
+        Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < n; i++) {
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            int numCow = Integer.parseInt(st.nextToken());
-            int cowLocation = Integer.parseInt(st.nextToken());
-
-            if (!cowMap.containsKey(numCow)) {
-                cowMap.put(numCow,cowLocation);
-            } else {
-                if (cowMap.get(numCow) != cowLocation) {
-                    res += 1;
-                    cowMap.put(numCow,cowLocation);
-                }
-            }
-
+            int card = Integer.parseInt(st.nextToken());
+            map.put(card,  map.getOrDefault(card, 0) + 1);
         }
-        System.out.println(res);
 
+        int m = Integer.parseInt(br.readLine());
+        StringTokenizer st2 = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < m; i++) {
+            int card2 = Integer.parseInt(st2.nextToken());
+            if (map.containsKey(card2)) {
+                sb.append(map.get(card2)).append(" ");
+            } else {
+                sb.append(0).append(' ');
+            }
+        }
+
+        System.out.println(sb);
         br.close();
+
     }
 }
