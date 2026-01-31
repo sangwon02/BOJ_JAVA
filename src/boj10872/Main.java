@@ -5,21 +5,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
-    // 팩토리얼을 구하는 재귀함수
-    public static int factorial(int n) {
-        if (n == 0) {
-            return 1;
-        }
-        return n*factorial(n-1);
+    public static int pactorial(int n) {
+        if (n <= 1) return 1;
+        return pactorial(n-1)*n;
     }
 
-    public static void main(String[] args) throws IOException{
+    public  static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
         int n = Integer.parseInt(br.readLine());
-
-        System.out.println(factorial(n));
-
+        System.out.println(pactorial(n));
         br.close();
     }
 }
